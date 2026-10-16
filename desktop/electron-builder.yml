@@ -1,0 +1,46 @@
+# Windows packaging for JARVIS. Build with:
+#   npm run bundle:renderer   (builds ../dist and copies it to desktop/renderer)
+#   npm run dist:win          (electron-builder --win nsis)
+#
+# An unsigned build installs and runs locally; Windows SmartScreen may show a
+# "Windows protected your PC" prompt until the app has reputation or is signed.
+appId: com.jarvis.localassistant
+productName: JARVIS
+copyright: JARVIS local assistant
+
+directories:
+  output: dist
+  buildResources: build
+
+files:
+  - electron/**/*
+  - renderer/**/*
+  - package.json
+  - "!**/__pycache__/**"
+
+# The Python service ships beside the app; it is started with the user's own
+# Python interpreter (see docs/WINDOWS-SETUP.md), never downloaded at runtime.
+extraResources:
+  - from: python
+    to: python
+    filter:
+      - "**/*"
+      - "!tests/**"
+      - "!**/__pycache__/**"
+      - "!.venv/**"
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  artifactName: ${productName}-${version}-setup.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: JARVIS

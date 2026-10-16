@@ -1,0 +1,18 @@
+.env.local
+
+# Build output
+dist/
+tsconfig.tsbuildinfo
+
+# Node
+node_modules/
+
+# Desktop app: generated renderer bundle, packaged installers, local venv
+desktop/renderer/
+desktop/dist/
+desktop/build/
+desktop/python/.venv/
+
+# Python
+__pycache__/
+*.py[cod]

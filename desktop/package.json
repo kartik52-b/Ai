@@ -1,0 +1,21 @@
+{
+  "name": "jarvis-desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "JARVIS desktop shell — Electron front end plus the restricted local Python service",
+  "type": "module",
+  "main": "electron/main.mjs",
+  "scripts": {
+    "start": "electron .",
+    "bundle:renderer": "node scripts/bundle-renderer.mjs",
+    "pack": "npm run bundle:renderer && electron-builder --dir",
+    "dist:win": "npm run bundle:renderer && electron-builder --win nsis",
+    "test": "npm run test:python && npm run test:node",
+    "test:python": "python -m unittest discover -s python/tests -t python",
+    "test:node": "node --test \"node-tests/*.test.mjs\""
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^26.17.0"
+  }
+}

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 221 50% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 221 50% 7%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 186 100% 45%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 217 33% 16%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 33% 13%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 199 80% 42%;
+    --accent-foreground: 210 40% 96%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 96%;
+
+    --signal: 186 100% 45%;
+    --signal-foreground: 222 47% 5%;
+
+    --amber: 38 92% 55%;
+    --amber-foreground: 222 47% 5%;
+
+    --border: 217 33% 19%;
+    --input: 217 33% 21%;
+    --ring: 186 100% 45%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: hsl(186 100% 45% / 0.28);
+  }
+}
+
+@layer utilities {
+  .hud-grid {
+    background-image:
+      linear-gradient(hsl(186 100% 45% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(186 100% 45% / 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 18px hsl(186 100% 45% / 0.55);
+  }
+
+  .glow-box {
+    box-shadow: 0 0 24px hsl(186 100% 45% / 0.18);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+
+  .scrollbar-slim::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-slim::-webkit-scrollbar-thumb {
+    background: hsl(186 100% 45% / 0.35);
+    border-radius: 999px;
+  }
+
+  .scrollbar-slim::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

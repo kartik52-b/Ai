@@ -1,0 +1,24 @@
+# JARVIS local service — recommended dependency set (Windows 10/11, Python 3.10+)
+#
+# The command engine itself is standard-library only: with an empty environment
+# the service still runs every non-speech command (open apps, time, system info,
+# file search). The packages below add speech and volume control.
+#
+#   py -3.10 -m pip install -r requirements.txt
+#
+# Wake word + microphone
+openwakeword>=0.6.0          # Apache-2.0 code; the 'hey_jarvis' model is CC BY-NC-SA 4.0
+sounddevice>=0.4.6           # PortAudio wheels for Windows, no build step
+numpy>=1.24,<2.3             # required by openWakeWord
+
+# Offline speech recognition (download the small model separately, see docs/WINDOWS-SETUP.md)
+vosk>=0.3.45
+
+# Offline speech output through Windows SAPI5
+pyttsx3>=2.90
+
+# Windows master volume (comtypes-backed COM)
+pycaw>=20240210
+
+# Optional but recommended: lets JARVIS verify that a launched process is really running
+psutil>=5.9
